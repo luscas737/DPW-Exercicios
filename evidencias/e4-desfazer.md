@@ -112,3 +112,37 @@ Este documento apresenta a tabela resumo de comandos para desfazer alterações 
             new file:   arquivo_errado.txt
             new file:   e4-desfazer.md
     ```
+
+---
+
+### 4. Histórico Local de Referências (Reflog)
+
+**Comando:**
+```bash
+git reflog -10
+```
+
+**Saída:**
+```text
+c0e4ad6 (HEAD -> main, origin/main) HEAD@{0}: commit: Questão 4 - Exercício 00
+2c04f7d HEAD@{1}: reset: moving to HEAD~1
+9d25adc HEAD@{2}: commit (amend): Mensagem corrigida
+be61ca9 HEAD@{3}: commit: teste
+2c04f7d HEAD@{4}: commit: correções
+b73386c HEAD@{5}: commit: Questão 3 - Exercício 00
+fafc4d3 HEAD@{6}: commit (merge): Merge branch 'feat/titulo-b'
+d595ead (feat/titulo-a) HEAD@{7}: checkout: moving from feat/titulo-b to main
+4987ce3 (feat/titulo-b) HEAD@{8}: commit: teste de branch - parte 2
+82a4ba5 HEAD@{9}: checkout: moving from main to feat/titulo-b
+```
+
+---
+
+### 5. Análise de Comandos de Reversão
+
+**Pergunta:** Por que o caso 5 é diferente do 4?
+
+**Resposta:**
+O caso 4 (`reset --soft`) **reescreve o histórico** localmente, removendo o commit — mas se já tiver sido enviado ao remoto, causa problemas para outros desenvolvedores.
+O caso 5 (`revert`) **preserva o histórico** criando um novo commit que desfaz as alterações do commit anterior — é seguro para usar em commits já compartilhados no remoto.
+Ou seja: `reset` muda o passado, `revert` adiciona um novo capítulo que nega o passado sem apagá-lo.
