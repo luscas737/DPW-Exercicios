@@ -1,0 +1,20 @@
+# Node
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+coverage/
+
+# Banco local
+*.sqlite
+*.sqlite-journal
+
+# Ambiente
+.env
+.env.*
+!.env.example
+
+# Editores
+.vscode/
+.idea/
+.DS_Store
